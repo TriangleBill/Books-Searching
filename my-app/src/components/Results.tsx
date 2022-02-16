@@ -1,22 +1,27 @@
-import React from 'react'
 import Card from './Card'
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/rootReducer'
 
 
 export default function Results(): JSX.Element {
-    return (
-        <div className="wrapper mt-5 p-5">
-            <h4 className="text-center mb-5">Found 446 results</h4>
+    const booksList = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.booksList
+    })
+    const booksCounter = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.booksConter
+    })
 
-            <div className="row">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-            </div>
-        </div>
+    return (
+        <>
+            <div className="wrapper mt-5 p-5">
+                <h4 className="text-center mb-5">Found {booksCounter} results</h4>
+
+                    <div className="row row-flex">
+                        {booksList.map((el: any) => <Card bookInfo={el} key={el.id} />)}
+                    </div>
+                </div>
+        </>
     )
 }

@@ -28,6 +28,13 @@
 }
 
 .book-card {
+  height: 100%;
   background-color: lightgray;
   border: none;
+}
+
+.row-flex {
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
 }
