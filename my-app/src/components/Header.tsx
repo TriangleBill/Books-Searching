@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { fetchBooks } from '../app/asyncAction';
 import { RootState } from '../app/rootReducer';
 import { setSearchText, setCategory, setSorting } from './../app/action';
 
-export default function Header(): JSX.Element {
+function Header(): JSX.Element {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -81,3 +82,5 @@ export default function Header(): JSX.Element {
         </div>
     )
 }
+
+export default memo(Header)

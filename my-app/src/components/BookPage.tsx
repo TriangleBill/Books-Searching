@@ -71,21 +71,6 @@ export default function BookPage(): JSX.Element {
             <Header />
 
             {renderReduslt()}
-
-            {/* <div className="wrapper mt-5 p-5 row">
-                <div className="col-md-5 col-sm-6 book-poster">
-                    <img src={bookImage()} alt="Book poster" className="img-fluid mx-auto d-block my-5" />
-                </div>
-                <div className="col-md-6 col-sm-6 book-info p-3 p-sm-5">
-                    <h5 className="mb-2 text-muted">{book.volumeInfo.categories.join('/')}</h5>
-                    <h2 className="mt-3 mb-3">{book.volumeInfo.title}</h2>
-                    <h5 className="text-muted"><ins>{book.volumeInfo.authors.join(', ')}</ins></h5>
-
-                    <div className="book-description">
-                        <p>Description</p>
-                    </div>
-                </div>
-            </div> */}
         </>
     )
 }

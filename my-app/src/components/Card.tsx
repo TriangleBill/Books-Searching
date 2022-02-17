@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type CardProps = {
     bookInfo: any
 }
 
-export default function Card({ bookInfo }: CardProps) {
+function Card({ bookInfo }: CardProps) {
     const bookId = bookInfo.id
     const navigate = useNavigate()
 
@@ -37,3 +38,6 @@ export default function Card({ bookInfo }: CardProps) {
         </div>
     )
 }
+
+
+export default memo(Card)
