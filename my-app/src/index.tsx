@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { fetchBooks } from './app/asyncAction';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 store.dispatch(fetchBooks('', 'relevance', 'All',))
 
@@ -14,6 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+        <ToastContainer />
         <App />
       </BrowserRouter>
     </Provider>
