@@ -1,23 +1,31 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMoreBooks } from '../app/asyncAction';
 import { RootState } from '../app/rootReducer';
 
-type LoadMoreBtnProps = {
-    searchText: string,
-    category: string,
-    sorting: string,
-}
-
-export default function LoadMoreBtn(props:LoadMoreBtnProps): JSX.Element {
+export default function LoadMoreBtn(): JSX.Element {
     const dispatch = useDispatch()
+    const searchText = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.searchText
+    })
+
+    const category = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.category
+    })
+
+    const sorting = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.sorting
+    })
+
     const shownBoks = useSelector((state:RootState) => {
         const { searchReducer } = state
         return searchReducer.shownBooks
     })
 
     const handleClick = () => {
-        dispatch(fetchMoreBooks(props.searchText, props.sorting, props.category, shownBoks))
+        dispatch(fetchMoreBooks(searchText, sorting, category, shownBoks))
     }
 
     return (

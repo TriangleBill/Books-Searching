@@ -1,11 +1,14 @@
 
 import { createReducer } from '@reduxjs/toolkit';
-import { setBooks, setMoreBooks, dropShownBooks } from './../action';
+import { setBooks, setMoreBooks, dropShownBooks, setSearchText, setCategory, setSorting } from './../action';
 
 const initialState = {
     booksConter: '',
     booksList: [],
-    shownBooks: 30
+    shownBooks: 30,
+    searchText: '',
+    category: 'all',
+    sorting: 'relevance'
 }
 
 export const searchReducer = createReducer(initialState, (builder) => {
@@ -20,7 +23,20 @@ export const searchReducer = createReducer(initialState, (builder) => {
         state.booksList = state.booksList.concat(books.items)
         state.shownBooks += 30
     })
+    .addCase(setSearchText, (state, action) => {
+        const {text} = action.payload
+        state.searchText = text
+    })
+    .addCase(setCategory, (state, action) => {
+        const {category} = action.payload
+        state.category = category
+    })
+    .addCase(setSorting, (state, action) => {
+        const {sorting} = action.payload
+        state.sorting = sorting
+    })
     .addCase(dropShownBooks, (state, _action) => {
         state.shownBooks = 30
     })
+
 })

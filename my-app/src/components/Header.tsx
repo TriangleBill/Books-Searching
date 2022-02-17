@@ -1,36 +1,44 @@
-import { SetStateAction} from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { fetchBooks } from '../app/asyncAction';
-import { Dispatch } from 'react';
+import { RootState } from '../app/rootReducer';
+import { setSearchText, setCategory, setSorting } from './../app/action';
 
-type HeaderProps = {
-    searchText: string,
-    category: string,
-    sorting: string,
-    setSearchText: (value:string) => void,
-    setCategory: (value:string) => void,
-    setSorting: (value:string) => void
-}
-
-export default function Header(props: HeaderProps): JSX.Element {
-
+export default function Header(): JSX.Element {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const searchText = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.searchText
+    })
+
+    const category = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.category
+    })
+
+    const sorting = useSelector((state: RootState) => {
+        const { searchReducer } = state
+        return searchReducer.sorting
+    })
+
     const handleInput = (e:any) => {
-        props.setSearchText(e.target.value)
+        dispatch(setSearchText(e.target.value))
     }
 
     const handleSelectCategory = (e:any) => {
-        props.setCategory(e.target.value)
+        dispatch(setCategory(e.target.value))
     }
 
     const handleSelectSorting = (e:any) => {
-        props.setSorting(e.target.value)
+        dispatch(setSorting(e.target.value))
     }
 
     const submitHandler = (e: any) => {
         e.preventDefault()
-        dispatch(fetchBooks( props.searchText,  props.sorting,  props.category))
+        navigate('/')
+        dispatch(fetchBooks( searchText,  sorting,  category))
     }
 
     return (
@@ -39,15 +47,15 @@ export default function Header(props: HeaderProps): JSX.Element {
 
             <form onSubmit={submitHandler} action="">
                 <div className="search-input">
-                    <input onChange={handleInput} value={ props.searchText} type="text" className="form-control" placeholder="Enter your search..." />
+                    <input onChange={handleInput} value={ searchText} type="text" className="form-control" placeholder="Enter your search..." />
                     <input type="submit" hidden />
                     <button onClick={submitHandler} className='search-btn'></button>
                 </div>
                 <div className="row">
-                    <div className="col"><h5>Categories</h5></div>
-                    <div className="col">
+                    <div className="col-6 col-sm mb-3"><h5>Categories</h5></div>
+                    <div className="col-6 col-sm">
                         <div className="dropdown">
-                            <select defaultValue='all' onChange={handleSelectCategory} className="form-select" aria-label="Default select example">
+                            <select defaultValue={category} onChange={handleSelectCategory} className="form-select" aria-label="Default select example">
                                 <option value="all">all</option>
                                 <option value="art">art</option>
                                 <option value="biography">biography</option>
@@ -58,10 +66,10 @@ export default function Header(props: HeaderProps): JSX.Element {
                             </select>
                         </div>
                     </div>
-                    <div className="col"><h5>Sortin by</h5></div>
-                    <div className="col">
+                    <div className="col-6 col-sm"><h5>Sortin by</h5></div>
+                    <div className="col-6 col-sm">
                         <div className="dropdown">
-                            <select defaultValue='relevance' onChange={handleSelectSorting} className="form-select" aria-label="Default select example">
+                            <select defaultValue={sorting} onChange={handleSelectSorting} className="form-select" aria-label="Default select example">
                                 <option value="relevance">relevance</option>
                                 <option value="newest">newest</option>
                             </select>
