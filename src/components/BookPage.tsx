@@ -74,7 +74,11 @@ export default function BookPage(): JSX.Element {
                 </div>
             )
         } else {
-            return <Loader />
+            return (
+                <div className="wrapper mt-5 p-5">
+                    <Loader />
+                </div>
+            )
         }
     }
 

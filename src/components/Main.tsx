@@ -12,13 +12,18 @@ export default function Main(): JSX.Element {
         return searchReducer.booksList
     })
 
+    const bookIsLoading = useSelector((state: RootState) => {
+        const {fetchReducer} = state
+        return fetchReducer.bookIsLoading
+    })
+    
     const booksCounter = useSelector((state: RootState) => {
         const { searchReducer } = state
         return searchReducer.booksConter
     })
 
     const resultRender = (): JSX.Element => {
-        if (booksList && !booksList.length) {
+        if (bookIsLoading) {
             return (
                 <div className="wrapper mt-5 p-5">
                     <Loader />
