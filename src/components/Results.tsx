@@ -20,7 +20,7 @@ export default function Results(): JSX.Element {
                 <h4 className="text-center mb-5">Found {booksCounter} results</h4>
 
                     <div className="row row-flex">
-                        {booksList.map((el: BookType) => <Card bookInfo={el} key={el.id} />)}
+                        {booksList.map((el: BookType, index) => <Card bookInfo={el} key={el.id + index} />)}
                     </div>
                 </div>
         </>
