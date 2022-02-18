@@ -9,6 +9,7 @@ describe('Reducer: fetchReducer', () => {
     const state = {
         bookIsLoading: true,
         book: {
+            id:'qwe',
             error: null,
             volumeInfo: {
                 title: '',
@@ -33,6 +34,7 @@ describe('Reducer: fetchReducer', () => {
             .toEqual({
                 bookIsLoading: true,
                 book: {
+                    id:'qwe',
                     error: null,
                     volumeInfo: {
                         title: 'Title',

@@ -48,7 +48,7 @@ function Header(): JSX.Element {
 
             <form onSubmit={submitHandler} action="">
                 <div className="search-input">
-                    <input onChange={handleInput} value={ searchText} type="text" className="form-control" placeholder="Enter your search..." />
+                    <input data-testid="searching-text" onChange={handleInput} value={ searchText} type="text" className="form-control" placeholder="Enter your search..." />
                     <input type="submit" hidden />
                     <button type='submit' className='search-btn'></button>
                 </div>
@@ -56,7 +56,7 @@ function Header(): JSX.Element {
                     <div className="col-6 col-sm mb-3"><h5>Categories</h5></div>
                     <div className="col-6 col-sm">
                         <div className="dropdown">
-                            <select defaultValue={category} onChange={handleSelectCategory} className="form-select" aria-label="Default select example">
+                            <select data-testid="category" defaultValue={category} onChange={handleSelectCategory} className="form-select" aria-label="Default select example">
                                 <option value="all">all</option>
                                 <option value="art">art</option>
                                 <option value="biography">biography</option>
@@ -70,7 +70,7 @@ function Header(): JSX.Element {
                     <div className="col-6 col-sm"><h5>Sortin by</h5></div>
                     <div className="col-6 col-sm">
                         <div className="dropdown">
-                            <select defaultValue={sorting} onChange={handleSelectSorting} className="form-select" aria-label="Default select example">
+                            <select data-testid="sorting" defaultValue={sorting} onChange={handleSelectSorting} className="form-select" aria-label="Default select example">
                                 <option value="relevance">relevance</option>
                                 <option value="newest">newest</option>
                             </select>

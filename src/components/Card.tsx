@@ -23,7 +23,7 @@ function Card({ bookInfo }: CardProps) {
     }
 
     return (
-        <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 my-5 my-md-2" style={{cursor: 'pointer'}}>
+        <div data-testid="book-card" className="col-lg-3 col-md-4 col-sm-6 col-xs-12 my-5 my-md-2" style={{cursor: 'pointer'}}>
             <div onClick={handleClick} className="card book-card p-3 ">
                 <img style={{ maxWidth: '300px', maxHeight: '430px' }} className="card-img-top mx-auto" src={bookImage()} alt="Card capture" />
                 <div className="card-body">

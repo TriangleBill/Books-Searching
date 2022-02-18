@@ -1,8 +1,8 @@
 
 
 export const fakeBook = {
-
     error: null,
+    id: 'qwe',
     volumeInfo: {
         title: 'Title',
         authors: ['Author1', 'Author2'],
@@ -18,5 +18,4 @@ export const fakeBook = {
 export const fakeBooksRequest = {
     totalItems: '123',
     items: [fakeBook, fakeBook]
-    
 }
