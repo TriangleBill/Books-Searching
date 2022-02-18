@@ -24,19 +24,19 @@ function Header(): JSX.Element {
         return searchReducer.sorting
     })
 
-    const handleInput = (e:any) => {
+    const handleInput = (e:React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearchText(e.target.value))
     }
 
-    const handleSelectCategory = (e:any) => {
+    const handleSelectCategory = (e:React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(setCategory(e.target.value))
     }
 
-    const handleSelectSorting = (e:any) => {
+    const handleSelectSorting = (e:React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(setSorting(e.target.value))
     }
 
-    const submitHandler = (e: any) => {
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         navigate('/')
         dispatch(fetchBooks( searchText,  sorting,  category))
@@ -50,7 +50,7 @@ function Header(): JSX.Element {
                 <div className="search-input">
                     <input onChange={handleInput} value={ searchText} type="text" className="form-control" placeholder="Enter your search..." />
                     <input type="submit" hidden />
-                    <button onClick={submitHandler} className='search-btn'></button>
+                    <button type='submit' className='search-btn'></button>
                 </div>
                 <div className="row">
                     <div className="col-6 col-sm mb-3"><h5>Categories</h5></div>

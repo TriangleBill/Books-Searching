@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BookType } from '../app/types';
 
 type CardProps = {
-    bookInfo: any
+    bookInfo: BookType
 }
 
 function Card({ bookInfo }: CardProps) {

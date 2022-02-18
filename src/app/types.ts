@@ -10,3 +10,18 @@ export enum ActionTypes {
     SetCategory = 'search/SET_CATEGORY',
     SetSorting = 'search/SET_SORTING'
 }
+
+export type BookType = {
+    error: null,
+    id: string,
+    volumeInfo: {
+        title: string,
+        authors: string[],
+        description: string,
+        categories: string[],
+        imageLinks: {
+            thumbnail: string,
+            medium: string,
+        }
+    }
+}

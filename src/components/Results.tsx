@@ -1,6 +1,7 @@
 import Card from './Card'
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/rootReducer'
+import { BookType } from '../app/types';
 
 
 export default function Results(): JSX.Element {
@@ -19,7 +20,7 @@ export default function Results(): JSX.Element {
                 <h4 className="text-center mb-5">Found {booksCounter} results</h4>
 
                     <div className="row row-flex">
-                        {booksList.map((el: any) => <Card bookInfo={el} key={el.id} />)}
+                        {booksList.map((el: BookType) => <Card bookInfo={el} key={el.id} />)}
                     </div>
                 </div>
         </>
