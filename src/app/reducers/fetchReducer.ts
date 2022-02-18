@@ -1,8 +1,9 @@
 
 import { createReducer } from '@reduxjs/toolkit';
-import { setBook } from './../action';
+import { changeBookLoading, setBook } from './../action';
 
 const initialState = {
+    bookIsLoading: true,
     book: {
         error: null,
         volumeInfo: {
@@ -23,5 +24,9 @@ export const fetchReducer = createReducer(initialState, (builder) => {
     .addCase(setBook, (state, action) => {
         const {data} = action.payload
         state.book = data
+    })
+    .addCase(changeBookLoading, (state, action) => {
+        const {data} = action.payload
+        state.bookIsLoading = data
     })
 })

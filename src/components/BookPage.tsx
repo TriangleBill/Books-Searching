@@ -7,11 +7,17 @@ import { fetchBook } from './../app/asyncAction';
 import { RootState } from "../app/rootReducer";
 import Loader from "./Loader";
 import Page404 from "./Page404";
+import { fetchReducer } from './../app/reducers/fetchReducer';
 
 export default function BookPage(): JSX.Element {
     const dispatch = useDispatch()
  
     const params = useParams<{ id?: string }>();
+
+    const bookIsLoading = useSelector((state: RootState) => {
+        const {fetchReducer} = state
+        return fetchReducer.bookIsLoading
+    })
 
     const book = useSelector((state: RootState) => {
         const { fetchReducer } = state
@@ -50,7 +56,7 @@ export default function BookPage(): JSX.Element {
 
 
     const renderReduslt = () => {
-        if (book.volumeInfo.title !== undefined) {
+        if (!bookIsLoading) {
             return (
                 <div className="wrapper mt-5 p-5 row">
                     <div className="col-xl-5 col-12 book-poster">

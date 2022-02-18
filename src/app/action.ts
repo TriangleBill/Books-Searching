@@ -19,6 +19,15 @@ export const setBook = createAction(
     })
 )
 
+export const changeBookLoading = createAction(
+    ActionTypes.ChangeBookLoading,
+    (data) => ({
+        payload: {
+            data
+        }
+    })
+    )
+
 export const setMoreBooks = createAction(
     ActionTypes.FetchMoreBooks,
     (books) => ({
