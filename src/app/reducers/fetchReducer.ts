@@ -4,6 +4,7 @@ import { setBook } from './../action';
 
 const initialState = {
     book: {
+        error: null,
         volumeInfo: {
             title: '',
             authors: [],

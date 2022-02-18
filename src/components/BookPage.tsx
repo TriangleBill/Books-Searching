@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBook } from './../app/asyncAction';
 import { RootState } from "../app/rootReducer";
 import Loader from "./Loader";
+import Page404 from "./Page404";
 
 export default function BookPage(): JSX.Element {
     const dispatch = useDispatch()
@@ -41,6 +42,11 @@ export default function BookPage(): JSX.Element {
     useEffect(() => {
         dispatch(fetchBook(params.id as string))
     }, [params.id, dispatch])
+
+    if (book.error) {
+        return <Page404 />
+    }
+
 
 
     const renderReduslt = () => {
